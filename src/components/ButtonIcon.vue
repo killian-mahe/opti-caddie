@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div class="buttonicon cursor-pointer inline-block bg-leclercOrange rounded-lg h-40 text-2xl mt-12">
+    <div class="buttonicon cursor-pointer flex bg-leclercOrange rounded-lg h-40 text-2xl mt-12 items-center">
         <span>{{name}}</span>
-        <div class="ml-32">
+        <div class="">
             <i :data-feather="icon" class="h-16 w-16"></i>
         </div>
     </div>
+    
   </div>
 </template>
 
