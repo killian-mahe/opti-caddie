@@ -11,5 +11,15 @@
 </template>
 
 <style lang="scss">
+  html {
+    background-color: #FAFAFA;
+  }
+
+  #app {
+    width: 1368px;
+    height: 912px;
+    margin: auto;
+    background-color: white;
+  }
 
 </style>
