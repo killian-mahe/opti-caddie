@@ -6,20 +6,32 @@
       <router-link to="/list_edit">List edit</router-link> |
       <router-link to="/geo">Geo</router-link>
     </div>
-    <router-view/>
+
+    <NavBar></NavBar>
+
+    <router-view />
   </div>
 </template>
 
+<script>
+import NavBar from "./components/NavBar";
+export default {
+  name: "app",
+  components: {
+    NavBar: NavBar,
+  },
+};
+</script>>
+
 <style lang="scss">
-  html {
-    background-color: #FAFAFA;
-  }
+html {
+  background-color: #2a2a2e;
+}
 
-  #app {
-    width: 1368px;
-    height: 912px;
-    margin: auto;
-    background-color: white;
-  }
-
+#app {
+  width: 1368px;
+  height: 912px;
+  margin: auto;
+  background-color: white;
+}
 </style>
