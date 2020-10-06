@@ -1,12 +1,12 @@
 <template>
-  <div class="home">
+  <div class="geo">
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'Home',
+  name: 'Geo',
   components: {
   }
 }
