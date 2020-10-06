@@ -22,6 +22,9 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+      leclercBlue: '#004AAD',
+      leclercOrange: '#FF914D',
+
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
