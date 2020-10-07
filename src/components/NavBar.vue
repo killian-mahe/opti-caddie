@@ -1,5 +1,5 @@
 <template>
-  <div id="nav" class="relative h-full w-24 shadow-2xl">
+  <div id="nav" class="relative h-full w-full shadow-2xl">
     <div class="absolute inset-x-0 top-0">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_E.Leclerc_Sans_le_texte.svg"

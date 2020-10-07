@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="flex flex-col">
+  <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/login">Login</router-link> |
@@ -7,9 +7,13 @@
       <router-link to="/geo">Geo</router-link>
     </div>
 
-    <NavBar></NavBar>
+    <div class="w-24 h-full float-left">
+      <NavBar></NavBar>
+    </div>
 
-    <router-view />
+    <div class="ml-24 h-full">
+      <router-view />
+    </div>
   </div>
 </template>
 
