@@ -1,22 +1,33 @@
 <template>
   <div id="nav" class="relative h-full w-full shadow-2xl">
     <div class="absolute inset-x-0 top-0">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_E.Leclerc_Sans_le_texte.svg"
-        class="h-16 mx-auto my-4"
-      />
+      <!-- Top Leclerc Icon -->
+      <router-link to="/login">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_E.Leclerc_Sans_le_texte.svg"
+          class="w-full p-2"
+        />
+      </router-link>
+
+      <!-- Top Buttons -->
       <router-link
         v-for="elem in top_elems"
         :key="elem.id"
         :to="elem.path"
         class="block py-4"
+        id="selection_button"
       >
         <i :data-feather="elem.icon" class="h-12 w-12 mx-auto"></i
       ></router-link>
     </div>
 
+    <!-- Bottom Buttons -->
     <div class="absolute inset-x-0 bottom-0">
-      <div v-for="elem in bot_elems" :key="elem.id" class="block py-4">
+      <div
+        v-for="elem in bot_elems"
+        :key="elem.id"
+        class="block py-4 cursor-pointer"
+      >
         <i :data-feather="elem.icon" class="h-12 w-12 mx-auto"></i>
       </div>
     </div>
@@ -28,12 +39,13 @@
   background-color: #f2f2f2;
 }
 
-.router-link-active {
+#selection_button.router-link-active {
   @apply border-solid;
   @apply border-l-8;
   @apply border-leclercBlue;
   @apply stroke-current;
   @apply text-leclercBlue;
+  @apply pr-2;
   background-color: #ccd7e7;
 }
 </style>
