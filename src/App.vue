@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/login">Login</router-link> |
       <router-link to="/list_edit">List edit</router-link> |
       <router-link to="/geo">Geo</router-link>
-    </div>
+    </div> -->
 
     <div class="w-24 h-full float-left">
       <NavBar></NavBar>
