@@ -1,9 +1,13 @@
 <template>
   <div id="wrapper">
     <div id="popup">
-      Démerde toi, on est pas tes parents
-      <div id="help-btn" class="cursor-pointer">
-        <i data-feather="bell" class="w-12 h-12"></i>
+      Blah blah très très l'explication de comment ça marche et tout, sisi tavu.
+
+      <div id="popup-bottom" class="cursor-pointer" @click="callOperator()">
+        <span class="text-lg mx-2">Appel vendeur</span>
+        <div id="help-btn" class="cursor-pointer">
+          <i data-feather="bell" class="w-12 h-12"></i>
+        </div>
       </div>
     </div>
 
@@ -31,15 +35,16 @@
 }
 
 #popup {
-  @apply w-64;
-  @apply h-64;
+  /* @apply w-64; */
+  width: 500px;
+  height: 750px;
   @apply opacity-100;
   @apply z-20;
   @apply bg-white;
   @apply rounded-lg;
-  @apply p-6;
   @apply text-justify;
   @apply relative;
+  @apply p-5;
 }
 
 #help-btn {
@@ -49,11 +54,27 @@
   @apply text-white;
   @apply rounded-full;
   @apply flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+#popup-bottom {
+  @apply bg-red-500;
+  @apply flex;
+  @apply text-left;
+  @apply h-20;
+  @apply text-white;
+  @apply rounded-full;
+
   @apply absolute;
   @apply inset-x-0;
   @apply bottom-0;
+
   justify-content: center;
   align-items: center;
+
+  @apply m-5;
 }
 </style>
 
@@ -66,6 +87,10 @@ export default {
   methods: {
     close: function () {
       this.$emit("exit");
+    },
+
+    callOperator: function () {
+      alert("Normalement là, un vendeur accours de manière véloce.");
     },
   },
 
