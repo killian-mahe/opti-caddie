@@ -5,8 +5,12 @@
       Opti-caddie
     </div>
     <div class="login flex justify-center items-center h-full">
-      <ButtonIcon icon="camera" name1="Scannez votre" name2="carte de fidélité" class="mr-16 px-16"></ButtonIcon>
-      <ButtonIcon icon="user" name1="Connectez-vous à" name2="votre compte" class="ml-16 px-16"></ButtonIcon>
+      <router-link to="/scan">
+        <ButtonIcon icon="camera" name1="Scannez votre" name2="carte de fidélité" class="mr-16 px-16"></ButtonIcon>
+      </router-link>
+      <router-link to="/identifiants">
+        <ButtonIcon icon="user" name1="Connectez-vous à" name2="votre compte" class="ml-16 px-16"></ButtonIcon>
+      </router-link>
     </div>
     <div class="login text-6xl object-center flex justify-center h-full text-leclercBlue pt-16 font-quicksand font-semibold">
       16 : 12
