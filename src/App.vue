@@ -7,8 +7,10 @@
       <router-link to="/geo">Geo</router-link>
     </div> -->
 
+    <HelpPopUp v-show="showPopUp" @exit="showPopUp = false"></HelpPopUp>
+
     <div v-if="$route.name != 'Login'" class="w-24 h-full float-left">
-      <NavBar></NavBar>
+      <NavBar @display-help="showPopUp = true"></NavBar>
     </div>
 
     <div class="h-full" :class="{ 'ml-24': $route.name != 'Login' }">
@@ -20,22 +22,31 @@
 <script>
 import NavBar from "./components/NavBar";
 import { mapState, mapActions } from "vuex";
+import HelpPopUp from "./components/HelpPopUp";
 
 export default {
   name: "app",
   components: {
     NavBar: NavBar,
+    HelpPopUp: HelpPopUp,
   },
+
+  data() {
+    return {
+      showPopUp: false,
+    };
+  },
+
   computed: {
-    ...mapState(['session', 'users']),
+    ...mapState(["session", "users"]),
   },
   methods: {
-    ...mapActions(['updateLoggedUser', 'updateSelectedList']),
+    ...mapActions(["updateLoggedUser", "updateSelectedList"]),
   },
   mounted() {
     this.updateLoggedUser(0);
     this.updateSelectedList(this.session.user.user_lists[0]);
-  }
+  },
 };
 </script>>
 
