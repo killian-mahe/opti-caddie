@@ -10,11 +10,16 @@
 
     <HelpPopUp v-show="showPopUp" @exit="showPopUp = false"></HelpPopUp>
 
-    <div v-if="$route.name != 'Login'" class="w-24 h-full float-left">
+    <div v-if="displayNavBar" class="w-24 h-full float-left">
       <NavBar @display-help="showPopUp = true"></NavBar>
     </div>
 
-    <div class="h-full" :class="{ 'ml-24': $route.name != 'Login' }">
+    <div
+      class="h-full"
+      :class="{
+        'ml-24': displayNavBar,
+      }"
+    >
       <router-view />
     </div>
   </div>
@@ -40,6 +45,10 @@ export default {
 
   computed: {
     ...mapState(["session", "users"]),
+
+    displayNavBar: function () {
+      return !["Login", "Scan", "Identifiants"].includes(this.$route.name);
+    },
   },
   methods: {
     ...mapActions(["updateLoggedUser", "updateSelectedList"]),
