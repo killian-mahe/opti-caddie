@@ -2,12 +2,10 @@
   <div id="nav" class="relative h-full w-full shadow-2xl">
     <div class="absolute inset-x-0 top-0">
       <!-- Top Leclerc Icon -->
-      <router-link to="/login">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_E.Leclerc_Sans_le_texte.svg"
-          class="w-full p-2"
-        />
-      </router-link>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_E.Leclerc_Sans_le_texte.svg"
+        class="w-full p-2"
+      />
 
       <!-- Top Buttons -->
       <router-link
