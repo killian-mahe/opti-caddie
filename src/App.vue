@@ -7,11 +7,11 @@
       <router-link to="/geo">Geo</router-link>
     </div> -->
 
-    <div class="w-24 h-full float-left">
+    <div v-if="$route.name != 'Login'" class="w-24 h-full float-left">
       <NavBar></NavBar>
     </div>
 
-    <div class="ml-24 h-full">
+    <div class="h-full" :class="{ 'ml-24': $route.name != 'Login' }">
       <router-view />
     </div>
   </div>
