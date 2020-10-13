@@ -1,5 +1,5 @@
 <template>
-  <div class="TimeTable w-48 p-2 bg-gray-100 rounded-md shadow">
+  <div class="TimeTable w-64 h-24 p-2 bg-time-table flex flex-col justify-around text-xl rounded-md shadow-md">
       <div class="flex justify-between">
           <span class="font-medium">Temps restant</span>
           <span>{{remainingTime}}</span>
@@ -44,3 +44,9 @@ export default {
   }
 }
 </script>
+
+<style lang="css">
+    .bg-time-table {
+        background-color: #f2f2f2;
+    }
+</style>

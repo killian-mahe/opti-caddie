@@ -8,15 +8,21 @@ export default new Vuex.Store({
     products: {
      apple : {
        id : 0,
-       label : "Pomme"
+       label : "Pomme",
+       price : 3,
+       img : 'pomme.png'
       },
       biscuit : {
         id : 1,
-        label : "Biscuit"
+        label : "Biscuit",
+        price : 1.2,
+        img : 'biscuits.png'
       },
       beef : {
         id : 2,
-        label : "Bœuf"
+        label : "Bœuf",
+        price : 11.25,
+        img : 'beef.png'
       }
     },
     shopping_lists : [
