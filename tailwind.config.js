@@ -24,8 +24,8 @@ module.exports = {
 
       leclercBlue: '#004AAD',
       leclercOrange: '#FF914D',
-      leclercOrangeClair: "#FF9100",
-      leclercOrangeFonce: "#FF914F",
+      leclercOrangeClair: "#FF9680",
+      leclercOrangeFonce: "#FF5733",
 
       gray: {
         100: '#f7fafc',
