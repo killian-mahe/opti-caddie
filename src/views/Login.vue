@@ -1,7 +1,7 @@
 <template>
   <div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_E.Leclerc_Sans_le_texte.svg h-48 w-auto">
-    <div class="login text-6xl object-center flex justify-center h-full text-leclercBlue pt-24 font-quicksand font-bold">
+    <img src="../assets/logo_leclerc.svg" class=" object-scale-down h-24 w-auto mr-auto ml-2 pt-2">
+    <div class="login text-6xl object-center flex justify-center h-full text-leclercBlue font-quicksand font-bold">
       Opti-caddie
     </div>
     <div class="login flex justify-center items-center h-full">
@@ -11,7 +11,7 @@
     <div class="login text-6xl object-center flex justify-center h-full text-leclercBlue pt-16 font-quicksand font-semibold">
       16 : 12
     </div>
-    <img src="../assets/logo_effica.svg" class="object-scale-down h-48 w-auto ml-auto mr-8 mt-8">
+    <img src="../assets/logo_effica.svg" class="flex object-scale-down h-48 w-auto ml-auto mr-8 mt-8">
   </div>
 </template>
 
