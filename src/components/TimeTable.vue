@@ -1,0 +1,46 @@
+<template>
+  <div class="TimeTable w-48 p-2 bg-gray-100 rounded-md shadow">
+      <div class="flex justify-between">
+          <span class="font-medium">Temps restant</span>
+          <span>{{remainingTime}}</span>
+      </div>
+      <div class="flex justify-between">
+          <span class="font-medium">Panier</span>
+          <span>{{basket}} €</span>
+      </div>
+  </div>
+</template>
+
+<script>
+
+export default {
+
+  name: 'TimeTable',
+  props: {
+      basket : {
+          type: Number,
+          required: true,
+          default: 0
+      },
+      time: {
+          type: Number,
+          required: true,
+          default: 0
+      }
+  },
+  computed: {
+      remainingTime() {
+          if (this.time >= 60) {
+
+              let hour = Math.trunc(this.time/60);
+              let min = this.time%60;
+
+              return hour+"h"+min;
+          }
+          else{
+              return this.time+" min";
+          }
+      }
+  }
+}
+</script>
