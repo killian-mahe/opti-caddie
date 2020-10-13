@@ -1,12 +1,10 @@
 <template>
   <div>
-    <div class="buttonicon cursor-pointer flex bg-leclercOrange rounded-lg h-40 text-2xl mt-12 items-center">
-        <span>{{name}}</span>
-        <div class="">
-            <i :data-feather="icon" class="h-16 w-16"></i>
-        </div>
+    <div class="buttonicon cursor-pointer bg-leclercOrange rounded-lg w-auto pl-4 pr-4 text-2xl mt-40 py-4  items-center grid">
+        <div class="grid text-center mt-2 pl-12 pr-12">{{name1}}</div>
+        <div class="grid text-center mt-2 pl-12 pr-12 pb-4">{{name2}}</div>
+        <div :data-feather="icon" class="h-16 w-16 flex items-center content-center ml-auto mr-auto"></div>
     </div>
-    
   </div>
 </template>
 
@@ -18,7 +16,8 @@ export default {
   components: {
   },
   props: [
-      "name",
+      "name1",
+      "name2",
       "icon",
   ],
   mounted(){
