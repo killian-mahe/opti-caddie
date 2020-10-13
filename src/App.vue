@@ -19,11 +19,23 @@
 
 <script>
 import NavBar from "./components/NavBar";
+import { mapState, mapActions } from "vuex";
+
 export default {
   name: "app",
   components: {
     NavBar: NavBar,
   },
+  computed: {
+    ...mapState(['session', 'users']),
+  },
+  methods: {
+    ...mapActions(['updateLoggedUser', 'updateSelectedList']),
+  },
+  mounted() {
+    this.updateLoggedUser(0);
+    this.updateSelectedList(this.session.user.user_lists[0]);
+  }
 };
 </script>>
 
