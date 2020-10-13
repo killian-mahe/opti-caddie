@@ -19,7 +19,7 @@ export default new Vuex.Store({
         label : "Bœuf"
       }
     },
-    shopping_list : [
+    shopping_lists : [
       {
         name : "Vacances",
         id : 2,
@@ -51,15 +51,46 @@ export default new Vuex.Store({
     ],
     users : [
       {
+        id : 0,
         username : 'killian-mahe',
         password : 'azertyuiop',
-        shopping_list : [2, 3]
+        user_lists : [2, 3]
+      },
+      {
+        id : 1,
+        username : 'yolo',
+        password : 'qwertyuiop',
+        user_lists : []
       }
-    ]
+    ],
+    session : {
+      user: {
+
+      },
+      shopping_list: {
+
+      }
+    }
   },
   mutations: {
+    CHANGE_CONNECTED_USER(state, user_id) {
+      state.session.user = state.users.find(user => user.id === Number(user_id));
+    },
+    CHANGE_SELECT_SHOPPING_LIST(state, list_id) {
+      if (state.session.user.user_lists.includes(list_id)) {
+        state.session.shopping_list = state.shopping_lists.find(list => list.id === Number(list_id));
+      } else {
+        console.error("Shopping list not owned by the user");
+      }
+    }
   },
   actions: {
+    updateLoggedUser({ commit }, user_id) {
+      commit('CHANGE_CONNECTED_USER', user_id);
+    },
+    updateSelectedList({ commit }, list_id) {
+      commit('CHANGE_SELECT_SHOPPING_LIST', list_id);
+    }
   },
   modules: {
   }

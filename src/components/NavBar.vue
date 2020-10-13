@@ -25,6 +25,7 @@
         v-for="elem in bot_elems"
         :key="elem.id"
         class="block py-4 cursor-pointer"
+        @click="elem.action"
       >
         <i :data-feather="elem.icon" class="h-12 w-12 mx-auto"></i>
       </div>
@@ -76,16 +77,19 @@ export default {
           id: 0,
           text: "Zoom +",
           icon: "zoom-in",
+          action: "",
         },
         {
           id: 1,
           text: "Zoom -",
           icon: "zoom-out",
+          action: "",
         },
         {
           id: 2,
           text: "Aide",
           icon: "help-circle",
+          action: this.displayHelp,
         },
       ],
     };
@@ -93,6 +97,12 @@ export default {
 
   mounted() {
     feather.replace();
+  },
+
+  methods: {
+    displayHelp: function () {
+      this.$emit("display-help");
+    },
   },
 };
 </script>
