@@ -2,14 +2,14 @@
   <div class="carousel w-full">
       <slot></slot>
 
-      <button @click="$emit('next')" class="next deco">Next</button>
-      <button @click="$emit('prev')" class="prev deco">Prev</button>
+      <button @click="$emit('next')" class="next deco"><i data-feather="chevron-right" class="h-16 w-12 "> </i></button>
+      <button @click="$emit('prev')" class="prev deco"><i data-feather="chevron-left"  class="h-16 w-12  "> </i></button>
   </div>
 </template>
 
 <script>
 
-
+import feather from "feather-icons"
   export default {
     name: 'Carousel',
     data() {
@@ -32,9 +32,9 @@
 
 .deco{
     position: absolute;
-    height: 40px;
-    width: 50px;
-    top: calc(50% - 20px);
+ 
+
+    top: calc(50% - 30px);
     background-color: rgba(0,0,0,0.8);
     border: none;
     color: #FFF;
