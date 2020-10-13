@@ -85,9 +85,6 @@ export default {
       }
       console.log(this.session.user)
     },
-    mdpForgot:fonction(){
-        
-    }
   }
 };
 </script>
