@@ -1,5 +1,5 @@
 <template>
-  <div class="SimpleButton bg-leclercOrange hover:bg-leclercOrangeClair text-black font-bold py-2 px-4 border-b-4 border-leclercOrangeFonce hover:border-leclercOrange rounded-lg text-center">{{ name }}
+  <div class="SimpleButton bg-leclercOrange hover:bg-leclercOrangeClair text-black font-semibold py-2 px-4 border-b-8 border-leclercOrangeFonce hover:border-leclercOrange rounded-lg text-center cursor-pointer">{{ name }}
   </div>
 </template>
 
