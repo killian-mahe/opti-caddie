@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import TimeTable from '../components/TimeTable.vue';
-import ProductCard from '../components/ProductCard.vue';
+import TimeTable from '../components/Geo/TimeTable.vue';
+import ProductCard from '../components/Geo/ProductCard.vue';
 import { mapState } from 'vuex';
 
 export default {
