@@ -7,7 +7,7 @@
 
     <!-- Bottom -->
     <footer class="absolute inset-x-0 bottom-0 p-3 flex justify-between">
-      <TimeTable :basket="50" :time="59"></TimeTable>
+      <TimeTable :basket="50" :time="session.shopping_list.time"></TimeTable>
       <div>
         <ProductCard v-for="product in nextProducts" :key="product.id" :product="products.apple"></ProductCard>
       </div>
@@ -28,12 +28,12 @@ export default {
   computed: {
     ...mapState(['products', 'session']),
     nextProducts: function() {
+      if (this.session.shopping_list.products)
+      {
+        return this.session.shopping_list.products.slice(0, 3);
+      }
       return [];
-      // return this.session.shopping_list.products.slice(0, 3);
     }
-  },
-  mounted() {
-    console.log(this.session);
   }
 }
 </script>
