@@ -106,6 +106,17 @@ export default new Vuex.Store({
       commit('CHANGE_SELECT_SHOPPING_LIST', list_id);
     }
   },
+  getters: {
+    shoppingListTotal: function(state) {
+      if (state.session.shopping_list.products) 
+      {
+        return state.session.shopping_list.products.reduce((accumulator, product) => {
+          return accumulator + state.products.find(p => p.id === product.id).price*product.quantity;
+        }, 0);
+      }
+      return 0;
+    }
+  },
   modules: {
   }
 })

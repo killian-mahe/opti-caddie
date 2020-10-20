@@ -7,7 +7,7 @@
 
     <!-- Bottom -->
     <footer class="absolute inset-x-0 bottom-0 p-3 flex justify-between items-end">
-      <TimeTable :basket="basket" :time="session.shopping_list.time"></TimeTable>
+      <TimeTable :basket="shoppingListTotal" :time="session.shopping_list.time"></TimeTable>
       <div class="w-1/4">
         <ProductCard v-for="product in nextProducts" :key="product.id" :product="getProduct(product.id)" class="my-2"></ProductCard>
       </div>
@@ -18,7 +18,7 @@
 <script>
 import TimeTable from '../components/Geo/TimeTable.vue';
 import ProductCard from '../components/Geo/ProductCard.vue';
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'Geo',
@@ -27,6 +27,7 @@ export default {
   },
   computed: {
     ...mapState(['products', 'session']),
+    ...mapGetters(['shoppingListTotal']),
     nextProducts: function() {
       if (this.session.shopping_list.products)
       {
@@ -34,15 +35,6 @@ export default {
       }
       return [];
     },
-    basket: function() {
-      if (this.session.shopping_list.products) 
-      {
-        return this.session.shopping_list.products.reduce((accumulator, product) => {
-          return accumulator + this.getProduct(product.id).price*product.quantity;
-        }, 0);
-      }
-      return 0;
-    }
   },
   methods: {
     getProduct: function(id) {
