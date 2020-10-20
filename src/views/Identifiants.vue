@@ -83,13 +83,14 @@ export default {
     ...mapState(["users", "session"])
   },
   methods:{
-    ...mapActions (["updateLoggedUser"]),
+    ...mapActions (["updateLoggedUser", "updateSelectedList"]),
     connect:function(){
       let user=this.users.find(tmpuser=>{
         return tmpuser.username===this.username && tmpuser.password===this.mdp
         })
       if(user){
-        this.updateLoggedUser(user.id)
+        this.updateLoggedUser(user.id);
+        this.updateSelectedList(user.user_lists[0]);
         this.$router.push({ name: 'Home' });
         this.popupNoUser=false;
         this.popupUser=true;
