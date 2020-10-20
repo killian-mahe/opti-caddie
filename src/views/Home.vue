@@ -1,11 +1,10 @@
 <template>
   <div class="home px-12 pt-10">
     <h1 class=" font-bold pb-4 text-leclercBlue text-2xl">Mes listes</h1>
-    <div v-for="id in session.user.user_lists" :key="id" class="  bg-gray-300 h-24">
+    <div v-for="id in session.user.user_lists" :key="id" class="  bg-gray-300 h-24 mb-8">
       <i data-feather="shopping-cart" class="h-24 w-24 pb-8 inline-block"></i>
-
       <List :list="getList(id)" ></List>
-      
+      <SimpleButton name="Editer" class="w-48 my-5 mr-4 inline-block float-right text-xl" style></SimpleButton> 
     </div>
 
     <div class="w-full flex justify-between mt-24">
