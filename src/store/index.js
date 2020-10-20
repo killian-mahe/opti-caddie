@@ -5,26 +5,26 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    products: {
-     apple : {
+    products: [
+     {
        id : 0,
        label : "Pomme",
        price : 3,
        img : 'pomme.png'
       },
-      biscuit : {
+     {
         id : 1,
         label : "Biscuit",
         price : 1.2,
         img : 'biscuits.png'
       },
-      beef : {
+     {
         id : 2,
         label : "Bœuf",
         price : 11.25,
         img : 'beef.png'
       }
-    },
+    ],
     productsInPromo: [
       {img : 'beef.png', label : "Bœuf", id : 0, price: 11.25}, {img : 'biscuits.png', label : "Biscuit", id : 1, price : 1.2}
     ],

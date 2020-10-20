@@ -7,9 +7,9 @@
 
     <!-- Bottom -->
     <footer class="absolute inset-x-0 bottom-0 p-3 flex justify-between">
-      <TimeTable :basket="50" :time="session.shopping_list.time"></TimeTable>
+      <TimeTable :basket="basket" :time="session.shopping_list.time"></TimeTable>
       <div>
-        <ProductCard v-for="product in nextProducts" :key="product.id" :product="products.apple"></ProductCard>
+        <ProductCard v-for="product in nextProducts" :key="product.id" :product="products[0]"></ProductCard>
       </div>
     </footer>
   </div>
@@ -33,6 +33,20 @@ export default {
         return this.session.shopping_list.products.slice(0, 3);
       }
       return [];
+    },
+    basket: function() {
+      if (this.session.shopping_list.products) 
+      {
+        return this.session.shopping_list.products.reduce((accumulator, product) => {
+          return accumulator + this.getProduct(product.id).price*product.quantity;
+        }, 0);
+      }
+      return 0;
+    }
+  },
+  methods: {
+    getProduct: function(id) {
+      return this.products.find(product => product.id === id);
     }
   }
 }
