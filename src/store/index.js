@@ -32,7 +32,7 @@ export default new Vuex.Store({
       {
         name : "Vacances",
         id : 2,
-        time: "25min",
+        time: 25,
         products: [
           {
             id : 1,
@@ -47,7 +47,7 @@ export default new Vuex.Store({
       {
         name : "Week-end",
         id : 3,
-        time: "35min",
+        time: 35,
         products: [
           {
             id : 0,
