@@ -28,11 +28,12 @@ export default {
   computed: {
     ...mapState(['products', 'session']),
     nextProducts: function() {
-      return this.sessions.products.slice(0, 3);
+      return [];
+      // return this.session.shopping_list.products.slice(0, 3);
     }
   },
   mounted() {
-    console.log(this.products);
+    console.log(this.session);
   }
 }
 </script>
