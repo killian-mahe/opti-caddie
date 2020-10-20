@@ -74,7 +74,7 @@ export default new Vuex.Store({
         id : 1,
         username : 'yolo',
         password : 'qwertyuiop',
-        user_lists : []
+        user_lists : [2]
       }
     ],
     session : {
@@ -116,6 +116,10 @@ export default new Vuex.Store({
         }, 0);
       }
       return 0;
+    },
+    isLoggedIn: function(state) {
+      if (typeof state.session.user.id !== 'undefined') return true;
+      return false;
     }
   },
   modules: {

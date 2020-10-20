@@ -1,4 +1,5 @@
-# my-first-vue-cli-app
+# Opti-Caddie
+*Un projet de Killian Mahé, Faustin Bacher, Pierre-Louis Hernio et Tinaël Sanvoisin*
 
 ## Project setup
 ```
