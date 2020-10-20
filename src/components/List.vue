@@ -1,7 +1,5 @@
 <template>
-  <div class="inline-block">
-    <h3 class="inline-block  pl-8 pt-2 text-2xl">{{ list.name }} <br> ~{{ duration }}</h3> 
-  </div>
+    <h3 class="inline-block  ml-8 my-2 text-2xl">{{ list.name }} <br> ~{{ duration }}</h3> 
 </template>
 
 <script>

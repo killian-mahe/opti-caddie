@@ -4,14 +4,17 @@
     <div v-for="id in session.user.user_lists" :key="id" class="  bg-gray-300 h-24 mb-8">
       <i data-feather="shopping-cart" class="h-24 w-24 pb-8 inline-block"></i>
       <List :list="getList(id)" ></List>
-      <SimpleButton name="Editer" class="w-48 my-5 mr-4 inline-block float-right text-xl" style></SimpleButton> 
+      <router-link to="/list_edit">
+        <SimpleButton name="Editer"  class="w-48 my-5 mr-4 inline-block float-right text-xl" style></SimpleButton> 
+      </router-link>
     </div>
 
     <div class="w-full flex justify-between mt-24">
-       <SimpleButton name="Ajouter une liste" class="w-5/12 inline-block float-right text-3xl" style></SimpleButton> 
-       <SimpleButton name="Scanner la liste" class="w-5/12 inline-block float-right text-3xl" style></SimpleButton> 
+       <SimpleButton  name="Ajouter une liste" class="w-5/12 inline-block float-right text-3xl" style></SimpleButton> 
+       <SimpleButton  @click="showPopup" name="Scanner la liste" class="w-5/12 inline-block float-right text-3xl" style></SimpleButton> 
     </div>
-    <button @click="print">test</button>
+    <Popup title="Vous avez bien scanné votre liste !" v-show="isPopupVisible" @close="closePopup"></Popup>
+
     <div class=" bg-gray-300 my-20">
       <Carousel
         @next="next"
@@ -40,6 +43,7 @@ import SimpleButton from "../components/SimpleButton.vue"
 import Carousel from "../components/Carousel.vue"
 import CarouselSlide from "../components/CarouselSlide.vue"
 import List from "../components/List.vue"
+import Popup from "../components/Popup.vue"
 import { mapState } from 'vuex';
 import feather from "feather-icons"
 export default {
@@ -50,6 +54,7 @@ export default {
       config: {
       visibleSlide : 0,
       direction : '',},
+      isPopupVisible: false,
     }
   },
 
@@ -78,16 +83,20 @@ export default {
       }
       this.config.direction = "right"
     },
-    
-    print(){
-      
-      for(let i=0; i<this.session.user.user_lists.length; i++){
-        console.log(this.session.user.user_lists[i]);
-      }
         
-    },
     getList : function (id) {
       return this.shopping_lists.find(list => list.id === id);
+    },
+
+    scanConfirmed : function () {
+      alert("Vous avez bien scanné votre liste !");
+    },
+
+    showPopup() {
+      this.isPopupVisible = true;
+    },
+    closePopup() {
+      this.isPopupVisible = false;
     },
 
   },
@@ -98,6 +107,7 @@ export default {
     Carousel,
     CarouselSlide,
     List,
+    Popup,
   },
 
   mounted(){
