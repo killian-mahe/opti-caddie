@@ -22,6 +22,11 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+      leclercBlue: '#004AAD',
+      leclercOrange: '#FF914D',
+      leclercOrangeClair: "#FF9680",
+      leclercOrangeFonce: "#FF5733",
+
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
@@ -264,6 +269,7 @@ module.exports = {
       ],
       serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+      quicksand: ['Quicksand', 'sans-serif'],
     },
     fontSize: {
       xs: '0.75rem',
@@ -291,6 +297,7 @@ module.exports = {
     height: theme => ({
       auto: 'auto',
       ...theme('spacing'),
+      '11/12': '80%',
       full: '100%',
       screen: '100vh',
     }),
@@ -354,6 +361,10 @@ module.exports = {
     minHeight: {
       '0': '0',
       full: '100%',
+      '32': '32px',
+      '40': '40px',
+      '50': '50px',
+      '64': '64px',
       screen: '100vh',
     },
     minWidth: {
@@ -686,8 +697,8 @@ module.exports = {
     borderColor: ['responsive', 'hover', 'focus'],
     borderOpacity: ['responsive', 'hover', 'focus'],
     borderRadius: ['responsive'],
-    borderStyle: ['responsive'],
-    borderWidth: ['responsive'],
+    borderStyle: ['responsive', 'active'],
+    borderWidth: ['responsive', 'active'],
     boxShadow: ['responsive', 'hover', 'focus'],
     boxSizing: ['responsive'],
     container: ['responsive'],
