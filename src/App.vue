@@ -53,8 +53,7 @@ export default {
   methods: {
     ...mapActions(["updateLoggedUser", "updateSelectedList"]),
   },
-  mounted() {
-    this.updateLoggedUser(0);
+  beforeMount() {
     this.updateSelectedList(this.session.user.user_lists[0]);
   },
 };

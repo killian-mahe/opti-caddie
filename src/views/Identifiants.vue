@@ -89,11 +89,11 @@ export default {
         })
       if(user){
         this.updateLoggedUser(user.id)
+        this.$router.push({ name: 'Home' });
         this.popupNoUser=false;
       }else{
         this.popupNoUser=true;
       }
-      console.log(this.session.user)
     },
 
     missingLogin:function(){
