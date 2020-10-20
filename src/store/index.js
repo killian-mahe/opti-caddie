@@ -25,10 +25,14 @@ export default new Vuex.Store({
         img : 'beef.png'
       }
     },
+    productsInPromo: [
+      {img : 'beef.png', label : "Bœuf", id : 0, price: 11.25}, {img : 'biscuits.png', label : "Biscuit", id : 1, price : 1.2}
+    ],
     shopping_lists : [
       {
         name : "Vacances",
         id : 2,
+        time: "25min",
         products: [
           {
             id : 1,
@@ -43,6 +47,7 @@ export default new Vuex.Store({
       {
         name : "Week-end",
         id : 3,
+        time: "35min",
         products: [
           {
             id : 0,

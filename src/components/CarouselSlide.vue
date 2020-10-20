@@ -1,8 +1,9 @@
 <template>
-    <transition :name="direction" mode="in-out">
-      <div v-show="visibleSlide === index" class="carousel-slide">
-          <slot></slot>
+    <transition :name="config.direction" mode="in-out">
+      <div v-show="config.visibleSlide === slide.id" class="carousel-slide">
+          <slot><p  class="inline-block text-3xl mr-12" >-50% sur le produit {{ slide.label }} : {{ slide.price/2 }}€ !</p><img :src="imgLink" class="inline-block w-48 h-48"/></slot>
       </div>
+      
     </transition>
     
 </template>
@@ -11,12 +12,27 @@
 <script>
 export default {
     name: "CarouselSlide",
-    props: ['index', 'visibleSlide', 'direction'],
+    props: {
+          slide : {
+          type: Object,
+          required: true
+          },
+          config: {
+          type: Object,
+          required: true
+          },
+          },
+
     data() {
         return {
 
         }
-    }
+    },
+    computed: {
+      imgLink : function() {
+          return "/img/products/"+this.slide.img;
+      }
+  },
 }
 </script>
 
