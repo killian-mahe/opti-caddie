@@ -6,19 +6,19 @@
     </main>
 
     <!-- Bottom -->
-    <footer class="absolute inset-x-0 bottom-0 p-3 flex justify-between">
-      <TimeTable :basket="50" :time="59"></TimeTable>
-      <div>
-        <ProductCard v-for="product in nextProducts" :key="product.id" :product="products.apple"></ProductCard>
+    <footer class="absolute inset-x-0 bottom-0 p-3 flex justify-between items-end">
+      <TimeTable :basket="shoppingListTotal" :time="session.shopping_list.time"></TimeTable>
+      <div class="w-1/4">
+        <ProductCard v-for="product in nextProducts" :key="product.id" :product="getProduct(product.id)" class="my-2"></ProductCard>
       </div>
     </footer>
   </div>
 </template>
 
 <script>
-import TimeTable from '../components/TimeTable.vue';
-import ProductCard from '../components/ProductCard.vue';
-import { mapState } from 'vuex';
+import TimeTable from '../components/Geo/TimeTable.vue';
+import ProductCard from '../components/Geo/ProductCard.vue';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'Geo',
@@ -27,12 +27,19 @@ export default {
   },
   computed: {
     ...mapState(['products', 'session']),
+    ...mapGetters(['shoppingListTotal']),
     nextProducts: function() {
-      return this.sessions.products.slice(0, 3);
-    }
+      if (this.session.shopping_list.products)
+      {
+        return this.session.shopping_list.products.slice(0, 3);
+      }
+      return [];
+    },
   },
-  mounted() {
-    console.log(this.products);
+  methods: {
+    getProduct: function(id) {
+      return this.products.find(product => product.id === id);
+    }
   }
 }
 </script>

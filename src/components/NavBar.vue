@@ -2,15 +2,12 @@
   <div id="nav" class="relative h-full w-full shadow-2xl">
     <div class="absolute inset-x-0 top-0">
       <!-- Top Leclerc Icon -->
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_E.Leclerc_Sans_le_texte.svg"
-        class="w-full p-2"
-      />
+      <img src="@/assets/logo_leclerc.svg" class="w-full p-2" />
 
       <!-- Top Buttons -->
       <router-link
         v-for="elem in top_elems"
-        :key="elem.id"
+        :key="elem.text"
         :to="elem.path"
         class="block py-4"
         id="selection_button"
@@ -23,7 +20,7 @@
     <div class="absolute inset-x-0 bottom-0">
       <div
         v-for="elem in bot_elems"
-        :key="elem.id"
+        :key="elem.text"
         class="block py-4 cursor-pointer"
         @click="elem.action"
       >
@@ -59,13 +56,11 @@ export default {
     return {
       top_elems: [
         {
-          id: 0,
           text: "Navigation",
           icon: "map-pin",
           path: "/geo",
         },
         {
-          id: 1,
           text: "Edition de liste",
           icon: "file-text",
           path: "/list_edit",
@@ -74,19 +69,16 @@ export default {
 
       bot_elems: [
         {
-          id: 0,
           text: "Zoom +",
           icon: "zoom-in",
           action: "",
         },
         {
-          id: 1,
           text: "Zoom -",
           icon: "zoom-out",
           action: "",
         },
         {
-          id: 2,
           text: "Aide",
           icon: "help-circle",
           action: this.displayHelp,

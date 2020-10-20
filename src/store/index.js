@@ -5,30 +5,37 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    products: {
-     apple : {
+    products: [
+     {
        id : 0,
        label : "Pomme",
        price : 3,
-       img : 'pomme.png'
+       img : 'pomme.png',
+       category: "Fruits"
       },
-      biscuit : {
+     {
         id : 1,
         label : "Biscuit",
         price : 1.2,
-        img : 'biscuits.png'
+        img : 'biscuits.png',
+        category: "Biscuits"
       },
-      beef : {
+     {
         id : 2,
         label : "Bœuf",
         price : 11.25,
-        img : 'beef.png'
+        img : 'beef.png',
+        category: "Boucherie"
       }
-    },
+    ],
+    productsInPromo: [
+      {img : 'beef.png', label : "Bœuf", id : 0, price: 11.25}, {img : 'biscuits.png', label : "Biscuit", id : 1, price : 1.2}
+    ],
     shopping_lists : [
       {
         name : "Vacances",
         id : 2,
+        time: 25,
         products: [
           {
             id : 1,
@@ -43,6 +50,7 @@ export default new Vuex.Store({
       {
         name : "Week-end",
         id : 3,
+        time: 35,
         products: [
           {
             id : 0,
@@ -96,6 +104,17 @@ export default new Vuex.Store({
     },
     updateSelectedList({ commit }, list_id) {
       commit('CHANGE_SELECT_SHOPPING_LIST', list_id);
+    }
+  },
+  getters: {
+    shoppingListTotal: function(state) {
+      if (state.session.shopping_list.products) 
+      {
+        return state.session.shopping_list.products.reduce((accumulator, product) => {
+          return accumulator + state.products.find(p => p.id === product.id).price*product.quantity;
+        }, 0);
+      }
+      return 0;
     }
   },
   modules: {
