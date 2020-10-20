@@ -297,6 +297,7 @@ module.exports = {
     height: theme => ({
       auto: 'auto',
       ...theme('spacing'),
+      '11/12': '80%',
       full: '100%',
       screen: '100vh',
     }),
@@ -360,6 +361,10 @@ module.exports = {
     minHeight: {
       '0': '0',
       full: '100%',
+      '32': '32px',
+      '40': '40px',
+      '50': '50px',
+      '64': '64px',
       screen: '100vh',
     },
     minWidth: {
@@ -692,8 +697,8 @@ module.exports = {
     borderColor: ['responsive', 'hover', 'focus'],
     borderOpacity: ['responsive', 'hover', 'focus'],
     borderRadius: ['responsive'],
-    borderStyle: ['responsive'],
-    borderWidth: ['responsive'],
+    borderStyle: ['responsive', 'active'],
+    borderWidth: ['responsive', 'active'],
     boxShadow: ['responsive', 'hover', 'focus'],
     boxSizing: ['responsive'],
     container: ['responsive'],
