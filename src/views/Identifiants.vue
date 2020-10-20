@@ -58,6 +58,7 @@
            @click="showPopup"
         ></SimpleButton>
         <Popup title="Pas de chance" v-show="isPopupVisible" @close="closePopup"></Popup>
+        <Popup title="Vous êtes connecté" v-show="popupUser" @close="closePopup"></Popup>
         <Popup title="Les identifiants ne correspondent pas à un utilisateur enregistré" v-show="popupNoUser" @close="closePopup"></Popup>
       </div>
     </form>
@@ -76,7 +77,7 @@ export default {
     Popup,
   },
   data(){
-      return {mdp:"", username:"", isPopupVisible:false, noUsername:false, noMdp:false, popupNoUser:false}
+      return {mdp:"", username:"", isPopupVisible:false, noUsername:false, noMdp:false, popupNoUser:false, popupUser:false}
   },
   computed:{
     ...mapState(["users", "session"])
@@ -91,8 +92,10 @@ export default {
         this.updateLoggedUser(user.id)
         this.$router.push({ name: 'Home' });
         this.popupNoUser=false;
+        this.popupUser=true;
       }else{
         this.popupNoUser=true;
+        this.popupUser=false;
       }
     },
 
@@ -115,6 +118,7 @@ export default {
     closePopup() {
       this.isPopupVisible = false;
       this.popupNoUser =false;
+      this.popupUser=false;
     }
   }
 };
