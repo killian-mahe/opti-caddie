@@ -10,19 +10,22 @@ export default new Vuex.Store({
        id : 0,
        label : "Pomme",
        price : 3,
-       img : 'pomme.png'
+       img : 'pomme.png',
+       category: "Fruits"
       },
      {
         id : 1,
         label : "Biscuit",
         price : 1.2,
-        img : 'biscuits.png'
+        img : 'biscuits.png',
+        category: "Biscuits"
       },
      {
         id : 2,
         label : "Bœuf",
         price : 11.25,
-        img : 'beef.png'
+        img : 'beef.png',
+        category: "Boucherie"
       }
     ],
     productsInPromo: [
