@@ -9,7 +9,6 @@
 
 <script>
 
-import feather from "feather-icons"
   export default {
     name: 'Carousel',
     data() {
@@ -18,8 +17,7 @@ import feather from "feather-icons"
         
         }
   },
-
- 
+   
 }
 </script>
 
