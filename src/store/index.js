@@ -96,7 +96,8 @@ export default new Vuex.Store({
       } else {
         console.error("Shopping list not owned by the user");
       }
-    }
+    },
+
   },
   actions: {
     updateLoggedUser({ commit }, user_id) {
