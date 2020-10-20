@@ -6,10 +6,10 @@
     </main>
 
     <!-- Bottom -->
-    <footer class="absolute inset-x-0 bottom-0 p-3 flex justify-between">
+    <footer class="absolute inset-x-0 bottom-0 p-3 flex justify-between items-end">
       <TimeTable :basket="basket" :time="session.shopping_list.time"></TimeTable>
-      <div>
-        <ProductCard v-for="product in nextProducts" :key="product.id" :product="products[0]"></ProductCard>
+      <div class="w-1/4">
+        <ProductCard v-for="product in nextProducts" :key="product.id" :product="getProduct(product.id)" class="my-2"></ProductCard>
       </div>
     </footer>
   </div>
