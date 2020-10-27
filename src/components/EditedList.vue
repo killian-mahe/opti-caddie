@@ -6,7 +6,7 @@
     <div id="product-in-list">
       <div
         class="h-8 bg-white p-1 m-2 rounded"
-        v-for="item in listProducts"
+        v-for="item in listProducts.products"
         :key="item.id"
       >
         <span class="float-left">{{ products[item.id].label }}</span>
@@ -15,7 +15,7 @@
         </span>
       </div>
     </div>
-    <div id="total">Total : {{ shoppingListTotal }} €</div>
+    <div id="total">Total : {{ shoppingListTotal(listProducts.id) }} €</div>
   </div>
 </template>
 
@@ -70,7 +70,7 @@ export default {
         let list_id = this.$route.params.list_id;
         let list = this.shopping_lists.find(shop_list => shop_list.id == list_id);
         
-        return list.products;
+        return list;
       }
       return [];
     },

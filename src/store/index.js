@@ -108,6 +108,7 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    /*
     shoppingListTotal: function(state) {
       if (state.session.shopping_list.products) 
       {
@@ -116,6 +117,14 @@ export default new Vuex.Store({
         }, 0);
       }
       return 0;
+    },
+    */
+    shoppingListTotal: (state) => (id) => {
+      let shopping_list = state.shopping_lists.find(list => list.id == id);
+
+      return shopping_list.products.reduce((accumulator, product) => {
+        return accumulator + state.products.find(p => p.id === product.id).price*product.quantity;
+      }, 0);
     },
     isLoggedIn: function(state) {
       if (typeof state.session.user.id !== 'undefined') return true;
