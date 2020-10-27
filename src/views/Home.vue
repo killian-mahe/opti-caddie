@@ -4,7 +4,7 @@
     <div v-for="id in session.user.user_lists" :key="id" class="  bg-gray-300 h-24 mb-8">
       <i data-feather="shopping-cart" class="h-24 w-24 pb-8 inline-block"></i>
       <List :list="getList(id)" ></List>
-      <router-link to="/list_edit">
+      <router-link :to="'/list_edit/'+id">
         <SimpleButton name="Editer"  class="w-48 my-5 mr-4 inline-block float-right text-xl" style></SimpleButton> 
       </router-link>
     </div>

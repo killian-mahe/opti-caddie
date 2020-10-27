@@ -62,12 +62,15 @@ export default {
   components: {},
 
   computed: {
-    ...mapState(["products", "session"]),
+    ...mapState(["products", "session", "shopping_lists"]),
     ...mapGetters(["shoppingListTotal"]),
 
     listProducts: function () {
       if (this.session.shopping_list.products) {
-        return this.session.shopping_list.products;
+        let list_id = this.$route.params.list_id;
+        let list = this.shopping_lists.find(shop_list => shop_list.id == list_id);
+        
+        return list.products;
       }
       return [];
     },

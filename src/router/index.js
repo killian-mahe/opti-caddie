@@ -29,7 +29,7 @@ const routes = [
     }
   },
   {
-    path: '/list_edit',
+    path: '/list_edit/:list_id',
     name: 'ListEdit',
     component: ListEdit,
     meta: {
