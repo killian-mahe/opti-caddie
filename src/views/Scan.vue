@@ -17,20 +17,17 @@
   <div class="camera-button">
       <div :class="{ 'is-primary' : !isCameraOpen, 'is-danger' : isCameraOpen}" @click="toggleCamera">
         <span v-if="!isCameraOpen">
-          <SimpleButton name="Open camera" class="max-w-xs ml-auto mr-auto"></SimpleButton>
+          <SimpleButton name="Activez la webcam" class="max-w-xs ml-auto mr-auto"></SimpleButton>
         </span>
         <span v-else>
-          <SimpleButton name="Close camera" class="max-w-xs ml-auto mr-auto"></SimpleButton>
+          <SimpleButton name="Désactivez la webcam" class="max-w-xs ml-auto mr-auto"></SimpleButton>
         </span>
     </div>
   </div>
   
-  <div v-show="isCameraOpen && isLoading" class="camera-loading">
-    <ul class="loader-circle">
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
+  <div v-show="isCameraOpen && isLoading" class="camera-loading mt-6">
+    <div class="inline pr-64"></div>
+    <div class="inline mt-12 ml-20">Veuillez patientez, si vous ne voyez rien veuillez vérifier que vous avez bien activé votre webcam !</div>
   </div>
   
   <div v-if="isCameraOpen" v-show="!isLoading" class="camera-box" :class="{ 'flash' : isShotPhoto }">
@@ -40,7 +37,7 @@
     <video ref="camera" :width="450" :height="337.5" autoplay class="ml-auto mr-auto pb-6 mt-6 rounded-lg"></video>
     <div v-if="isCameraOpen && !isLoading" class="camera-shoot">
       <button type="button" class="h-16 w-16 flex items-center content-center ml-auto mr-auto" @click="takePhoto">
-        <img src="../assets/camera--v2.png">
+        <img src="../assets/camera.png">
       </button>
   </div>
     <canvas v-show="isPhotoTaken" id="photoTaken" ref="canvas" :width="450" :height="337.5" class=" ml-auto mr-auto rounded-lg"></canvas>
@@ -50,7 +47,7 @@
   
   <div v-if="isPhotoTaken && isCameraOpen" class="camera-download mr-auto ml-auto">
     <a id="downloadPhoto" download="my-photo.jpg" class="button" role="button" @click="downloadImage">
-      <SimpleButton name="Download" class="mt-4 max-w-xs ml-auto mr-auto"></SimpleButton>
+      <SimpleButton name="Télécharger" class="mt-4 max-w-xs ml-auto mr-auto"></SimpleButton>
     </a>
     
   </div>
