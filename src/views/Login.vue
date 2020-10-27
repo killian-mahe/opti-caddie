@@ -13,7 +13,7 @@
       </router-link>
     </div>
     <div class="login text-6xl object-center flex justify-center h-full text-leclercBlue pt-16 font-quicksand font-semibold">
-      16 : 12
+      {{ time }}
     </div>
     <img src="../assets/logo_effica.svg" class="flex object-scale-down h-48 w-auto ml-auto mr-8 mt-8">
   </div>
@@ -25,6 +25,28 @@ export default {
   name: 'Login',
   components: {
     ButtonIcon,
+  },
+  data() {
+    return {
+      date: new Date(),
+      interval: Number
+    }
+  },
+  mounted() {
+    this.interval = setInterval(this.updateTime, 10000);
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
+  },
+  methods: {
+    updateTime: function() {
+      this.date = new Date();
+    }
+  },
+  computed: {
+    time: function() {
+      return this.date.getHours() + ' : ' + this.date.getMinutes();
+    }
   }
 }
 </script>
