@@ -1,6 +1,6 @@
 <template>
   <div class="edited-list">
-    <router-link to="/scan">
+    <router-link to="/show_list">
       <div id="return-btn">[[ RETOUR ]]</div>
     </router-link>
     <div id="product-in-list">

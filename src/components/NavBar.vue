@@ -63,7 +63,7 @@ export default {
         {
           text: "Edition de liste",
           icon: "file-text",
-          path: "/list_edit",
+          path: "/show_list",
         },
       ],
 

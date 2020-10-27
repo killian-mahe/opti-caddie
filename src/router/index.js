@@ -12,7 +12,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/show_list',
     name: 'Home',
     component: Home,
     meta: {
