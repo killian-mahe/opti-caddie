@@ -39,12 +39,20 @@ const routes = [
   {
     path: '/scan',
     name: 'Scan',
-    component: Scan
+    component: Scan,
+    meta: {
+      requiresAuth: false,
+      hideForAuth: true
+    }
   },
   {
     path: '/identifiants',
     name: 'Identifiants',
-    component: Identifiants
+    component: Identifiants,
+    meta: {
+      requiresAuth: false,
+      hideForAuth: true
+    }
   },
   {
     path: '/geo',
@@ -53,6 +61,10 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: '*',
+    redirect: {name:'Home'}
   }
 ]
 
@@ -84,7 +96,7 @@ router.beforeEach((to, from, next) => {
     if (store.getters.isLoggedIn) {
       next({ name: 'Home' })
     } else {
-      next({ name: 'Login' })
+      next()
     }
   } else {
     next() // does not require auth, make sure to always call next()!
