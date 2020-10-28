@@ -66,5 +66,6 @@ html {
   height: 912px;
   margin: auto;
   background-color: white;
+  user-select: none;
 }
 </style>

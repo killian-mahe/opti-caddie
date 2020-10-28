@@ -1,7 +1,11 @@
 <template>
   <div class="edit">
-    <div id="all-products"></div>
-    <div id="current-list"><EditedList></EditedList></div>
+    <div id="all-products">
+      <AllProducts @update-list="update_list"></AllProducts>
+    </div>
+    <div id="current-list">
+      <EditedList @update-list="update_list"></EditedList>
+    </div>
   </div>
 </template>
 
@@ -28,11 +32,34 @@
 
 <script>
 import EditedList from "../components/EditedList";
+import AllProducts from "../components/AllProducts";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "ListEdit",
   components: {
     EditedList,
+    AllProducts,
+  },
+
+  computed: {
+    ...mapState(["session", "shopping_lists"]),
+  },
+
+  methods: {
+    ...mapActions(["updateItemQuantityInList"]),
+
+    update_list(payload) {
+      if (this.session.shopping_list.products) {
+        let list_id = this.$route.params.list_id;
+
+        this.updateItemQuantityInList({
+          product_id: payload.product_id,
+          list_id,
+          amount: payload.amount,
+        });
+      }
+    },
   },
 };
 </script>
