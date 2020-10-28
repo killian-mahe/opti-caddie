@@ -44,7 +44,7 @@ import Carousel from "../components/Carousel.vue"
 import CarouselSlide from "../components/CarouselSlide.vue"
 import List from "../components/List.vue"
 import Popup from "../components/Popup.vue"
-import { mapState } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
 import feather from "feather-icons"
 export default {
 
@@ -60,6 +60,7 @@ export default {
 
   computed: {
     ...mapState(["products", "productsInPromo", "session", "shopping_lists"]),
+    ...mapGetters(["nextShoppingListId"]),
     slidesLen() {
       return this.productsInPromo.length;
     },
@@ -67,6 +68,7 @@ export default {
     
   },
   methods : {
+    ...mapActions (["createShoppingList"]),
     next() {
       if(this.config.visibleSlide >= this.slidesLen -1) {
         this.config.visibleSlide = 0;

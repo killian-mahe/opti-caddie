@@ -145,7 +145,7 @@ export default new Vuex.Store({
     updateItemQuantityInList({ commit }, payload) {
       commit('CHANGE_ITEM_IN_LIST', payload);
     },
-    createNewList({ commit }, list_id) {
+    createShoppingList({ commit }, list_id) {
       commit('CREATE_SHOPPING_LIST', list_id);
     }
   },
