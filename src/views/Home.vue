@@ -15,9 +15,9 @@
     </div>
 
     <div class="w-full flex justify-between mt-24">
-    <router-link :to="'/list_edit/'+(Math.max.apply(null, session.user.user_lists)+1)" class="w-5/12 inline-block float-right text-3xl">
+    <div class="w-5/12 inline-block float-right text-3xl">
        <SimpleButton  @click="addList" name="Ajouter une liste" class="" style></SimpleButton> 
-    </router-link>
+    </div>
        <SimpleButton  @click="showPopup" name="Scanner la liste" class="w-5/12 inline-block float-right text-3xl" style></SimpleButton> 
     </div>
     <Popup title="Vous avez bien scanné votre liste !" v-show="isPopupVisible" @close="closePopup"></Popup>
@@ -114,8 +114,9 @@ export default {
     },
 
     addList(){
-      this.createShoppingList(this.nextShoppingListId);
-      console.log(this.nextShoppingListId);
+      let nextId = this.nextShoppingListId;
+      this.createShoppingList(nextId);
+      this.$router.push('/list_edit/'+nextId);
     }
 
   },

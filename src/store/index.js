@@ -122,7 +122,7 @@ export default new Vuex.Store({
       list.products = list.products.filter(product => product.quantity > 0);
     },
     CREATE_SHOPPING_LIST(state, id) {
-      if (state.shopping_lists.map(list => list.id).includes(id))
+      if (!state.shopping_lists.map(list => list.id).includes(id))
       {
         let shopping_list = {
           name: "",
@@ -132,6 +132,7 @@ export default new Vuex.Store({
         };
 
         state.shopping_lists.push(shopping_list);
+        state.session.user.user_lists.push(id);
       }
     }
   },

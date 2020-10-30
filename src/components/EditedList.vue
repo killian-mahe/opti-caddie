@@ -76,7 +76,7 @@ import { mapGetters, mapState } from "vuex";
 import feather from "feather-icons";
 
 export default {
-  name: "EditList",
+  name: "EditedList",
   components: {},
 
   computed: {
