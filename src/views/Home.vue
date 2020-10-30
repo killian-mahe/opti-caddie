@@ -114,7 +114,8 @@ export default {
     },
 
     addList(){
-      this.createShoppingList(Math.max.apply(null, this.session.user.user_lists)+1);
+      this.createShoppingList(this.nextShoppingListId);
+      console.log(this.nextShoppingListId);
     }
 
   },
