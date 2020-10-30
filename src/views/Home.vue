@@ -4,9 +4,14 @@
     <div v-for="id in session.user.user_lists" :key="id" class="  bg-gray-300 h-24 mb-8">
       <i data-feather="shopping-cart" class="h-24 w-24 pb-8 inline-block"></i>
       <List :list="getList(id)" ></List>
+      <div class="float-right">
+      <router-link to="/geo">
+          <SimpleButton @click="updateList(id)" name="Utiliser"  class="w-48 my-5 mr-4 ml-64 inline-block  text-xl" style></SimpleButton> 
+        </router-link>
       <router-link :to="'/list_edit/'+id">
         <SimpleButton name="Editer"  class="w-48 my-5 mr-4 inline-block float-right text-xl" style></SimpleButton> 
       </router-link>
+      </div>
     </div>
 
     <div class="w-full flex justify-between mt-24">
@@ -44,7 +49,7 @@ import Carousel from "../components/Carousel.vue"
 import CarouselSlide from "../components/CarouselSlide.vue"
 import List from "../components/List.vue"
 import Popup from "../components/Popup.vue"
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import feather from "feather-icons"
 export default {
 
@@ -67,6 +72,7 @@ export default {
     
   },
   methods : {
+    ...mapActions(["updateSelectedList"]),
     next() {
       if(this.config.visibleSlide >= this.slidesLen -1) {
         this.config.visibleSlide = 0;
@@ -98,6 +104,10 @@ export default {
     closePopup() {
       this.isPopupVisible = false;
     },
+
+    updateList(id){
+      this.updateSelectedList(id);
+    }
 
   },
   
