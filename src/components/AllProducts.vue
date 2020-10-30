@@ -9,15 +9,15 @@
     </div>
     <transition-group name="list" tag="product" id="products">
       <div
-        id="product"
+        class="product"
         v-for="product in displayableproducts"
         :key="product.id"
-        @click="$emit('update-list', { product_id: product.id, amount: 1 })"
       >
-        <div class="bg-white w-1/2 rounded p-2">
+        <div class="bg-white w-full rounded p-2"
+            @click="$emit('update-list', { product_id: product.id, amount: 1 })">
           <img
             :src="product_img(product.id)"
-            class="m-auto object-cover h-32 w-32"
+            class="m-auto object-contain rounded-full border-leclercBlue border-2 h-32 w-32"
           />
           <div class="m-auto">{{ product.label }}</div>
           <div class="m-auto">{{ product.price }}€</div>
@@ -87,16 +87,19 @@ export default {
     flex-wrap: wrap;
     justify-content: space-between;
 
-    cursor: pointer;
-
-    #product {
-      width: 50%;
+    .product {
+      width: 30%;
       height: 35%;
       display: flex;
       justify-content: center;
       align-items: center;
-
       transition: all 0.2s;
+      @apply mx-2;
+
+      div {
+        cursor: pointer;
+      }
+
     }
   }
 }

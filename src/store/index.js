@@ -26,6 +26,48 @@ export default new Vuex.Store({
         price: 11.25,
         img: 'beef.png',
         category: "Boucherie"
+      },
+      {
+        id: 3,
+        label: "Oeufs x6",
+        price: 1.2,
+        img: 'eggs.png',
+        category: "Frais"
+      },
+      {
+        id: 4,
+        label: "Lait x6",
+        price: 5.4,
+        img: 'milk.png',
+        category: "Frais"
+      },
+      {
+        id: 5,
+        label: "Pâtes 500g",
+        price: 1.24,
+        img: 'pasta.png',
+        category: "Frais"
+      },
+      {
+        id: 6,
+        label: "Oignon",
+        price: 1.24,
+        img: 'onion.png',
+        category: "Légumes"
+      },
+      {
+        id: 7,
+        label: "Dentifrice",
+        price: 2.84,
+        img: 'toothpaste.png',
+        category: "Hygiène"
+      },
+      {
+        id: 8,
+        label: "Saucisson",
+        price: 2.84,
+        img: 'sausage.png',
+        category: "Boucherie"
       }
     ],
     productsInPromo: [
