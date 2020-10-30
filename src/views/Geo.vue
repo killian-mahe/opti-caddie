@@ -1,8 +1,13 @@
 <template>
   <div class="geo relative h-full w-full">
 
-    <main class="w-full h-full">
+    <main class="w-full h-full relative">
       <img class="h-full w-full" src="/navigation.png" alt="navigation_background">
+        <ProductInfo
+          v-for="point in points" 
+          :key='point.x + ";" + point.y'
+          :position="point"
+          :product="getProduct(session.shopping_list.products[point.product].id)"></ProductInfo>
     </main>
 
     <!-- Bottom -->
@@ -18,12 +23,22 @@
 <script>
 import TimeTable from '../components/Geo/TimeTable.vue';
 import ProductCard from '../components/Geo/ProductCard.vue';
+import ProductInfo from '../components/Geo/ProductInfo.vue';
+import feather from 'feather-icons';
 import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'Geo',
   components: {
-      TimeTable, ProductCard
+      TimeTable, ProductCard, ProductInfo
+  },
+  data() {
+    return {
+      points: [
+        {x: 480, y: 230, product: 0},
+        {x: 860, y: 250, product: 1}
+      ]
+    }
   },
   computed: {
     ...mapState(['products', 'session']),
@@ -36,9 +51,15 @@ export default {
       return [];
     },
   },
+  mounted() {
+    feather.replace({fill: 'currentColor'});
+  },
   methods: {
     getProduct: function(id) {
       return this.products.find(product => product.id === id);
+    },
+    onClickOutside: function(point) {
+      point.display = false;
     }
   }
 }
