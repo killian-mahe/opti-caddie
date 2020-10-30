@@ -71,12 +71,12 @@ export default {
         {
           text: "Zoom +",
           icon: "zoom-in",
-          action: "",
+          action: this.zoomIn,
         },
         {
           text: "Zoom -",
           icon: "zoom-out",
-          action: "",
+          action: this.zoomOut,
         },
         {
           text: "Aide",
@@ -84,6 +84,7 @@ export default {
           action: this.displayHelp,
         },
       ],
+      zoom : 1
     };
   },
 
@@ -95,6 +96,19 @@ export default {
     displayHelp: function () {
       this.$emit("display-help");
     },
+    zoomIn: function() {
+      this.zoom += 0.1;
+      this.scale('scale(' + this.zoom +')');
+    },
+    zoomOut: function() {
+      this.zoom -= 0.1;
+      this.scale('scale(' + this.zoom +')');
+    },
+    scale: function(value) {
+      document.body.style.webkitTransform = value;
+      document.body.style.msTransform = value;
+      document.body.style.transform = value;
+    }
   },
 };
 </script>
