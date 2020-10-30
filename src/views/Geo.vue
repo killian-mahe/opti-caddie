@@ -7,7 +7,7 @@
 
     <!-- Bottom -->
     <footer class="absolute inset-x-0 bottom-0 p-3 flex justify-between items-end">
-      <TimeTable :basket="shoppingListTotal" :time="session.shopping_list.time"></TimeTable>
+      <TimeTable :basket="shoppingListTotal(session.shopping_list.id)" :time="session.shopping_list.time"></TimeTable>
       <div class="w-1/4">
         <ProductCard v-for="product in nextProducts" :key="product.id" :product="getProduct(product.id)" class="my-2"></ProductCard>
       </div>

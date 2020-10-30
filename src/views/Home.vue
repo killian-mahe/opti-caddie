@@ -15,7 +15,9 @@
     </div>
 
     <div class="w-full flex justify-between mt-24">
-       <SimpleButton  name="Ajouter une liste" class="w-5/12 inline-block float-right text-3xl" style></SimpleButton> 
+    <router-link :to="'/list_edit/'+(Math.max.apply(null, session.user.user_lists)+1)" class="w-5/12 inline-block float-right text-3xl">
+       <SimpleButton  @click="addList" name="Ajouter une liste" class="" style></SimpleButton> 
+    </router-link>
        <SimpleButton  @click="showPopup" name="Scanner la liste" class="w-5/12 inline-block float-right text-3xl" style></SimpleButton> 
     </div>
     <Popup title="Vous avez bien scanné votre liste !" v-show="isPopupVisible" @close="closePopup"></Popup>
@@ -49,7 +51,8 @@ import Carousel from "../components/Carousel.vue"
 import CarouselSlide from "../components/CarouselSlide.vue"
 import List from "../components/List.vue"
 import Popup from "../components/Popup.vue"
-import { mapState, mapActions } from 'vuex';
+
+import { mapState, mapActions, mapGetters } from 'vuex';
 import feather from "feather-icons"
 export default {
 
@@ -65,6 +68,7 @@ export default {
 
   computed: {
     ...mapState(["products", "productsInPromo", "session", "shopping_lists"]),
+    ...mapGetters(["nextShoppingListId"]),
     slidesLen() {
       return this.productsInPromo.length;
     },
@@ -72,7 +76,7 @@ export default {
     
   },
   methods : {
-    ...mapActions(["updateSelectedList"]),
+    ...mapActions(["updateSelectedList","createShoppingList"]),
     next() {
       if(this.config.visibleSlide >= this.slidesLen -1) {
         this.config.visibleSlide = 0;
@@ -107,6 +111,10 @@ export default {
 
     updateList(id){
       this.updateSelectedList(id);
+    },
+
+    addList(){
+      this.createShoppingList(Math.max.apply(null, this.session.user.user_lists)+1);
     }
 
   },

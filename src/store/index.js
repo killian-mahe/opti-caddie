@@ -120,9 +120,20 @@ export default new Vuex.Store({
 
       // Ouais c'est crade mais ça fix un truc
       list.products = list.products.filter(product => product.quantity > 0);
+    },
+    CREATE_SHOPPING_LIST(state, id) {
+      if (state.shopping_lists.map(list => list.id).includes(id))
+      {
+        let shopping_list = {
+          name: "",
+          id: id,
+          time: 0,
+          products: []
+        };
+
+        state.shopping_lists.push(shopping_list);
+      }
     }
-
-
   },
   actions: {
     updateLoggedUser({ commit }, user_id) {
@@ -133,20 +144,12 @@ export default new Vuex.Store({
     },
     updateItemQuantityInList({ commit }, payload) {
       commit('CHANGE_ITEM_IN_LIST', payload);
+    },
+    createShoppingList({ commit }, list_id) {
+      commit('CREATE_SHOPPING_LIST', list_id);
     }
   },
   getters: {
-    /*
-    shoppingListTotal: function(state) {
-      if (state.session.shopping_list.products) 
-      {
-        return state.session.shopping_list.products.reduce((accumulator, product) => {
-          return accumulator + state.products.find(p => p.id === product.id).price*product.quantity;
-        }, 0);
-      }
-      return 0;
-    },
-    */
     shoppingListTotal: (state) => (id) => {
       let shopping_list = state.shopping_lists.find(list => list.id == id);
 
@@ -157,6 +160,10 @@ export default new Vuex.Store({
     isLoggedIn: function (state) {
       if (typeof state.session.user.id !== 'undefined') return true;
       return false;
+    },
+    nextShoppingListId: (state) => {
+      let ids = state.shopping_lists.map(list => list.id);
+      return Math.max(...ids) + 1;
     }
   },
   modules: {
