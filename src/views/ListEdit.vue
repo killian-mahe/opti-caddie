@@ -1,7 +1,7 @@
 <template>
   <div class="edit">
     <div id="all-products">
-      <AllProducts @update-list="update_list"></AllProducts>
+      <AllProducts @update-list="update_list" v-model="listName"></AllProducts>
     </div>
     <div id="current-list">
       <EditedList @update-list="update_list"></EditedList>
@@ -43,22 +43,31 @@ export default {
   },
 
   computed: {
-    ...mapState(["session", "shopping_lists"]),
+    ...mapState(["shopping_lists"]),
+    listName: {
+      get() {
+        return this.shopping_lists.find(list => list.id == this.$route.params.list_id).name;
+      },
+      set(val) {
+        this.updateListName({
+          list_id: this.$route.params.list_id,
+          list_name: val
+        });
+      }
+    }
   },
 
   methods: {
-    ...mapActions(["updateItemQuantityInList"]),
+    ...mapActions(["updateItemQuantityInList", 'updateListName']),
 
     update_list(payload) {
-      if (this.session.shopping_list.products) {
-        let list_id = this.$route.params.list_id;
+      let list_id = this.$route.params.list_id;
 
-        this.updateItemQuantityInList({
-          product_id: payload.product_id,
-          list_id,
-          amount: payload.amount,
-        });
-      }
+      this.updateItemQuantityInList({
+        product_id: payload.product_id,
+        list_id,
+        amount: payload.amount,
+      });
     },
   },
 };

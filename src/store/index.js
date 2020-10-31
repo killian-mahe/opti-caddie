@@ -167,7 +167,7 @@ export default new Vuex.Store({
       if (!state.shopping_lists.map(list => list.id).includes(id))
       {
         let shopping_list = {
-          name: "",
+          name: "Sans nom",
           id: id,
           time: 0,
           products: []
@@ -175,6 +175,16 @@ export default new Vuex.Store({
 
         state.shopping_lists.push(shopping_list);
         state.session.user.user_lists.push(id);
+      }
+    },
+    UPDATE_LIST_NAME(state, { list_id, list_name }) {
+      state.shopping_lists.forEach(list => {
+        if (list.id == list_id) {
+          list.name = list_name;
+        }
+      });
+      if (state.session.shopping_list && state.session.shopping_list.id == list_id) {
+        state.session.shopping_list.name = list_name;
       }
     }
   },
@@ -190,6 +200,9 @@ export default new Vuex.Store({
     },
     createShoppingList({ commit }, list_id) {
       commit('CREATE_SHOPPING_LIST', list_id);
+    },
+    updateListName({ commit }, payload) {
+      commit('UPDATE_LIST_NAME', payload);
     }
   },
   getters: {

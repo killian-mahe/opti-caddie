@@ -1,6 +1,9 @@
 <template>
   <div class="all-products">
     <div id="search-section" class="shadow-2xl">
+      <input type="text"
+      v-model="listName"
+      class="text-2xl shadow appearance-none border w-6/12 py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
       <input
         v-model="search_query"
         placeholder="Chercher un produit"
@@ -34,6 +37,8 @@ export default {
   name: "AllProducts",
   components: {},
 
+  props: ['value'],
+
   data() {
     return {
       search_query: "",
@@ -50,6 +55,14 @@ export default {
           -1
       );
     },
+    listName: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        this.$emit('input', val);
+      }
+    }
   },
 
   methods: {
@@ -67,17 +80,18 @@ export default {
 
   #search-section {
     @apply bg-green-500;
-    height: 30%;
+    height: 20%;
     @apply w-full;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
   }
 
   #products {
     @apply bg-gray-400;
-    height: 70%;
+    height: 80%;
     @apply w-full;
 
     overflow: scroll;
