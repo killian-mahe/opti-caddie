@@ -82,24 +82,22 @@ router.beforeEach((to, from, next) => {
     if (!store.getters.isLoggedIn) {
       next({ name: 'Login' })
     } else {
-      next() // go to wherever I'm going
+      next()
     }
   } else {
-    next() // does not require auth, make sure to always call next()!
+    next()
   }
 
   // hideForAuth
 
   if (to.matched.some(record => record.meta.hideForAuth)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
     if (store.getters.isLoggedIn) {
       next({ name: 'Home' })
     } else {
       next()
     }
   } else {
-    next() // does not require auth, make sure to always call next()!
+    next()
   }
 })
 

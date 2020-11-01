@@ -1,14 +1,16 @@
 <template>
   <div class="home px-12 pt-10">
     <h1 class=" font-bold pb-4 text-leclercBlue text-2xl">Mes listes</h1>
+
+    <!-- List of shopping list -->
     <div class="overflow-y-scroll h-64">
       <div v-for="id in session.user.user_lists" :key="id" class="bg-gray-300 h-24 mb-8">
         <i data-feather="shopping-cart" class="h-24 w-24 pb-8 inline-block"></i>
         <List :list="getList(id)" ></List>
         <div class="float-right">
         <router-link to="/geo">
-            <SimpleButton @click="updateList(id)" name="Utiliser"  class="w-48 my-5 mr-4 ml-64 inline-block  text-xl" style></SimpleButton> 
-          </router-link>
+          <SimpleButton @click="updateList(id)" name="Utiliser"  class="w-48 my-5 mr-4 ml-64 inline-block  text-xl" style></SimpleButton> 
+        </router-link>
         <router-link :to="'/list_edit/'+id">
           <SimpleButton name="Editer"  class="w-48 my-5 mr-4 inline-block float-right text-xl" style></SimpleButton> 
         </router-link>
@@ -16,14 +18,17 @@
       </div>
     </div>
 
+    <!-- User actions -->
     <div class="w-full flex justify-between mt-24">
-    <div class="w-5/12 inline-block float-right text-3xl">
-       <SimpleButton  @click="addList" name="Ajouter une liste" class="" style></SimpleButton> 
-    </div>
+      <div class="w-5/12 inline-block float-right text-3xl">
+        <SimpleButton  @click="addList" name="Ajouter une liste" class="" style></SimpleButton> 
+      </div>
        <SimpleButton  @click="showPopup" name="Scanner la liste" class="w-5/12 inline-block float-right text-3xl" style></SimpleButton> 
     </div>
+
     <Popup title="Vous avez bien scanné votre liste !" v-show="isPopupVisible" @close="closePopup"></Popup>
 
+    <!-- Carousel -->
     <div class=" bg-gray-300 my-20">
       <Carousel
         @next="next"

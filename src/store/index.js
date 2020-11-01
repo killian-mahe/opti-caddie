@@ -130,11 +130,13 @@ export default new Vuex.Store({
   },
   mutations: {
     CHANGE_CONNECTED_USER(state, user_id) {
+      // Copy the user in the sate.session.user object
       state.session.user = state.users.find(user => user.id === Number(user_id));
     },
     CHANGE_SELECT_SHOPPING_LIST(state, list_id) {
-      if (state.session.user.user_lists.includes(list_id)) {
+      if (state.session.user.user_lists.includes(list_id)) { // If the list is owned by the connected user
         state.session.shopping_list = state.shopping_lists.find(list => list.id === Number(list_id));
+        // Replace the list in session
       } else {
         console.error("Shopping list not owned by the user");
       }
@@ -143,7 +145,7 @@ export default new Vuex.Store({
     CHANGE_ITEM_IN_LIST(state, payload) {
       let list = state.shopping_lists.find(list => list.id === Number(payload.list_id));
 
-      if (list) {
+      if (list) { // If the list exist
         let productInList = list.products.find(product => product.id === payload.product_id);
 
         if (productInList) {
@@ -160,12 +162,13 @@ export default new Vuex.Store({
         console.error("Unknown list !");
       }
 
-      // Ouais c'est crade mais ça fix un truc
-      list.products = list.products.filter(product => product.quantity > 0);
+      list.products = list.products.filter(product => product.quantity > 0); // Ensure that all quantity are positive
     },
     CREATE_SHOPPING_LIST(state, id) {
       if (!state.shopping_lists.map(list => list.id).includes(id))
       {
+        // If the shopping_list doesn't already exist
+        // it creates an empty list and push it into the store and the user session
         let shopping_list = {
           name: "Sans nom",
           id: id,
@@ -178,12 +181,14 @@ export default new Vuex.Store({
       }
     },
     UPDATE_LIST_NAME(state, { list_id, list_name }) {
+      // Change the name of the list if the id correspond
       state.shopping_lists.forEach(list => {
         if (list.id == list_id) {
           list.name = list_name;
         }
       });
       if (state.session.shopping_list && state.session.shopping_list.id == list_id) {
+        // If the list is in the user session too, update the list in the session too
         state.session.shopping_list.name = list_name;
       }
     }
@@ -207,6 +212,7 @@ export default new Vuex.Store({
   },
   getters: {
     shoppingListTotal: (state) => (id) => {
+      // Give the total of a given shopping list
       let shopping_list = state.shopping_lists.find(list => list.id == id);
 
       return shopping_list.products.reduce((accumulator, product) => {
@@ -218,6 +224,7 @@ export default new Vuex.Store({
       return false;
     },
     nextShoppingListId: (state) => {
+      // Compute the next free shopping list id in ordre to create a new one 
       let ids = state.shopping_lists.map(list => list.id);
       return Math.max(...ids) + 1;
     }

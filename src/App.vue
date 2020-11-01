@@ -1,12 +1,5 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/list_edit">List edit</router-link> |
-      <router-link to="/geo">Geo</router-link>
-      <router-link to="/scan">Scan</router-link>
-    </div> -->
 
     <HelpPopUp v-show="showPopUp" @exit="showPopUp = false"></HelpPopUp>
 
