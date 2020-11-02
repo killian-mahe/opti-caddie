@@ -12,7 +12,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/show_list',
     name: 'Home',
     component: Home,
     meta: {
@@ -29,7 +29,7 @@ const routes = [
     }
   },
   {
-    path: '/list_edit',
+    path: '/list_edit/:list_id',
     name: 'ListEdit',
     component: ListEdit,
     meta: {
@@ -39,12 +39,20 @@ const routes = [
   {
     path: '/scan',
     name: 'Scan',
-    component: Scan
+    component: Scan,
+    meta: {
+      requiresAuth: false,
+      hideForAuth: true
+    }
   },
   {
     path: '/identifiants',
     name: 'Identifiants',
-    component: Identifiants
+    component: Identifiants,
+    meta: {
+      requiresAuth: false,
+      hideForAuth: true
+    }
   },
   {
     path: '/geo',
@@ -53,6 +61,10 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: '*',
+    redirect: {name:'Home'}
   }
 ]
 
@@ -70,24 +82,22 @@ router.beforeEach((to, from, next) => {
     if (!store.getters.isLoggedIn) {
       next({ name: 'Login' })
     } else {
-      next() // go to wherever I'm going
+      next()
     }
   } else {
-    next() // does not require auth, make sure to always call next()!
+    next()
   }
 
   // hideForAuth
 
   if (to.matched.some(record => record.meta.hideForAuth)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
     if (store.getters.isLoggedIn) {
       next({ name: 'Home' })
     } else {
-      next({ name: 'Login' })
+      next()
     }
   } else {
-    next() // does not require auth, make sure to always call next()!
+    next()
   }
 })
 

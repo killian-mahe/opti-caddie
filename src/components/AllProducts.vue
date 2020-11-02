@@ -1,0 +1,125 @@
+<template>
+  <div class="all-products">
+    <div id="search-section" class="shadow-2xl">
+      <input type="text"
+      v-model="listName"
+      class="text-2xl shadow appearance-none border w-6/12 py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      <input
+        v-model="search_query"
+        placeholder="Chercher un produit"
+        class="text-3xl shadow appearance-none border w-6/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      />
+    </div>
+    <transition-group name="list" tag="product" id="products">
+      <div
+        class="product"
+        v-for="product in displayableproducts"
+        :key="product.id"
+      >
+        <div class="bg-white w-full rounded p-2"
+            @click="$emit('update-list', { product_id: product.id, amount: 1 })">
+          <img
+            :src="product_img(product.id)"
+            class="m-auto object-contain rounded-full border-leclercBlue border-2 h-32 w-32"
+          />
+          <div class="m-auto">{{ product.label }}</div>
+          <div class="m-auto">{{ product.price }}€</div>
+        </div>
+      </div>
+    </transition-group>
+  </div>
+</template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+  name: "AllProducts",
+  components: {},
+
+  props: ['value'],
+
+  data() {
+    return {
+      search_query: "",
+    };
+  },
+
+  computed: {
+    ...mapState(["products"]),
+
+    displayableproducts() {
+      return this.products.filter(
+        (product) =>
+          product.label.toLowerCase().search(this.search_query.toLowerCase()) !=
+          -1
+      );
+    },
+    listName: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        this.$emit('input', val);
+      }
+    }
+  },
+
+  methods: {
+    product_img(id) {
+      return "/img/products/" + this.products[id].img;
+    },
+  },
+};
+</script>
+
+<style scoped lang="scss">
+.all-products {
+  @apply w-full;
+  @apply h-full;
+
+  #search-section {
+    @apply bg-green-500;
+    height: 20%;
+    @apply w-full;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  #products {
+    @apply bg-gray-400;
+    height: 80%;
+    @apply w-full;
+
+    overflow: scroll;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .product {
+      width: 30%;
+      height: 35%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s;
+      @apply mx-2;
+
+      div {
+        cursor: pointer;
+      }
+
+    }
+  }
+}
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+}
+</style>
