@@ -1,5 +1,5 @@
 # Opti-Caddie
-*Un projet de Killian Mahé, Faustin Bacher, Pierre-Louis Hernio et Tinaël Sanvoisin*
+A prototype application for the optimization of shopping in supermarkets, realized in Vue.JS.
 
 ## Project setup
 ```
